@@ -26,8 +26,14 @@
 #include "TDecimate.h"
 #include "TDecimateASM.h"
 #include "TCommonASM.h"
+
+#ifdef VS_TARGET_CPU_X86
 #include "emmintrin.h"
 #include "smmintrin.h" // SSE4
+#elif defined __ARM_NEON__
+#include "sse2neon.h"
+#endif
+
 #include <assert.h>
 
 static void blend_uint8_c(uint8_t* dstp, const uint8_t* srcp1,

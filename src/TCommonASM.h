@@ -24,8 +24,14 @@
 
 #include <stdint.h>
 #include "internal.h"
+
+#ifdef VS_TARGET_CPU_X86
 #include <xmmintrin.h>
 #include <emmintrin.h>
+#elif defined __ARM_NEON__
+#include "sse2neon.h"
+#endif
+
 #include <algorithm>
 #include <VSHelper.h>
 #include "cpufeatures.h"

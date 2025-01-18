@@ -105,6 +105,10 @@ static void doGetCPUFeatures(CPUFeatures *cpuFeatures) {
 #else
 static void doGetCPUFeatures(CPUFeatures *cpuFeatures) {
     memset(cpuFeatures, 0, sizeof(CPUFeatures));
+    cpuFeatures->sse2 = 1;
+    cpuFeatures->sse3 = 1;
+    cpuFeatures->sse4_1 = 1;
+    cpuFeatures->sse4_2 = 1;
 }
 #endif
 

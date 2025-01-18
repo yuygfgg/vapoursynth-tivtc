@@ -24,7 +24,13 @@
 */
 
 #include <stdio.h>
+
+#ifdef VS_TARGET_CPU_X86
 #include <xmmintrin.h>
+#elif defined __ARM_NEON__
+#include "sse2neon.h"
+#endif
+
 #ifndef _WIN32
 #include <limits.h>
 #include <stdlib.h>

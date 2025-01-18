@@ -27,8 +27,14 @@
 #define __TDECIMATEASM_H__
 
 //#include <windows.h>
+
+#ifdef VS_TARGET_CPU_X86
 #include <xmmintrin.h>
 #include <emmintrin.h>
+#elif defined __ARM_NEON__
+#include "sse2neon.h"
+#endif
+
 #include <VapourSynth.h>
 #include "internal.h"
 #include "TDecimate.h"

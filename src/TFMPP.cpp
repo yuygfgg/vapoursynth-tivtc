@@ -27,8 +27,13 @@
 #include "TFM.h"
 #include "TFMPP.h"
 #include "TCommonASM.h"
-#include "emmintrin.h"
-#include "smmintrin.h"
+
+#ifdef VS_TARGET_CPU_X86
+#include <emmintrin.h>
+#include <smmintrin.h>
+#elif defined __ARM_NEON__
+#include "sse2neon.h"
+#endif
 
 
 const VSFrameRef *TFMPP::GetFrame(int n, int activationReason, VSFrameContext *frameCtx, VSCore *core)

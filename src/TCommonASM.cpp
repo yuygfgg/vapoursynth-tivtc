@@ -20,8 +20,12 @@
 */
 
 #include "TCommonASM.h"
+#ifdef VS_TARGET_CPU_X86
 #include "emmintrin.h"
 #include "smmintrin.h" // SSE4
+#elif defined __ARM_NEON__
+#include "sse2neon.h"
+#endif
 #include <algorithm>
 
 void absDiff_SSE2(const uint8_t *srcp1, const uint8_t *srcp2,
